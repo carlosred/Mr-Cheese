@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Editar un mensajero</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Nombre" />
+            <h:inputText value="#{intermediario.mensajero.nombre_mensajero}"/>
+            <h:outputLabel value="Id" />
+            <h:inputText value="#{intermediario.mensajero.id_mensajero}"/>
+            <h:outputLabel value="Placa"/>
+            <h:inputText value="#{intermediario.mensajero.placa}"/>
+            
+        </h:panelGrid>  
+            <h:commandButton value="Modificar" actionListener="#{intermediario.ActualizarMensajero(intermediario.mensajero)}"/>
+            <h:commandButton value="inicio" action="index"/>
+            <h:commandButton value="Save" actionListener="#{intermediario.search()}"/>
+            
+            <h:dataTable value="#{intermediario.mensajeros}" var="mensajero">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Nombre"/>
+                </f:facet>
+                <h:outputLabel value="#{mensajero.nombre_mensajero}"/> 
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Id"/>
+                </f:facet>
+                <h:outputLabel value="#{mensajero.id_mensajero}"/> 
+            </h:column>
+              <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Placa"/>
+                </f:facet>
+                  <h:outputLabel value="#{mensajero.placa}"/> 
+            </h:column> 
+            </h:dataTable>:
+            
+            <h:outputLabel value="#{intermediario.mensajero.nombre_mensajero}"/>
+            <h:outputLabel value="#{intermediario.capturar(m)}"/>
+            
+       </h:form>
+    </h:body>
+</html>
+
