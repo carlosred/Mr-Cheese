@@ -19,7 +19,7 @@
         </h:panelGrid>  
             <h:commandButton value="Modificar" actionListener="#{intermediario.ActualizarMensajero(intermediario.mensajero)}"/>
             <h:commandButton value="inicio" action="index"/>
-            <h:commandButton value="Save" actionListener="#{intermediario.search()}"/>
+            
             
             <h:dataTable value="#{intermediario.mensajeros}" var="mensajero">
             <h:column>
@@ -42,8 +42,9 @@
             </h:column> 
             </h:dataTable>:
             
-            <h:outputLabel value="#{intermediario.mensajero.nombre_mensajero}"/>
-            <h:outputLabel value="#{intermediario.capturar(m)}"/>
+            <h:outputLabel value=" este es el mensajero actual :#{intermediario.mensajero.nombre_mensajero}"/>
+            <h:outputLabel value=" este es la posicion del actual  : #{intermediario.before}"/>
+       
             
        </h:form>
     </h:body>

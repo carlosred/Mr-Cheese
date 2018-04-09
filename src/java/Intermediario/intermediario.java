@@ -26,7 +26,7 @@ public class intermediario {
     private pedido pedido = new pedido();
     private despachador despachador = new despachador();
     private static List<mensajero> mensajeros = new ArrayList<>();
-    private mensajero before = null;
+    private int before ;
     /**
      * @return the cliente
      */
@@ -73,14 +73,16 @@ public class intermediario {
      * @return the mensajeros
      */
     
-    
+    /**
+     *
+     */
     public void AgregarMensajero(){
-        this.mensajeros.add(this.mensajero);
+        intermediario.mensajeros.add(this.mensajero);
         // limpiar campos o bueno el beans de memoria
         mensajero = new mensajero();
     }
     public void EliminarMensajero(mensajero m){
-        this.mensajeros.remove(m);
+        intermediario.mensajeros.remove(m);
          //limpiar campos o bueno el beans de memoria
         mensajero = new mensajero();
         
@@ -88,26 +90,25 @@ public class intermediario {
     // busca el elemento que se va a editar lo clona y lo vuelve el nuevo before.
     public void search(){
          mensajero clone = this.mensajero;
-        setBefore(clone);
+       
     }
     // metodo para actualizar cogiendo la posicion del anterior y agregandole en el arraylist al nuevo , seteandolo.
     public void ActualizarMensajero(mensajero editado ){
-       
-        int pos = intermediario.mensajeros.indexOf(this.before);
         
-        intermediario.mensajeros.add(pos, editado);
-      // limpiar campos o bueno el beans de memoria
+        //esta mierda deberia funcionar :v si me preguntan porque no? no tengo ni la menor puta idea. yo creo que logicamente esta bien :v
+        // porque no me setea en la posicion que le digo? incluso cuando en la pag se muestra? el before que es la posicion del actual? ni puta ideaa
+        // voy a pasarme a comunicacion social el proximo semestre sinceramente.
+     
+        this.mensajero = editado;
+         intermediario.mensajeros.set(before, this.mensajero);
+        
         
     } 
-    // captura el mensajero y lo vuelve la el nuevo beans global y me informa el nombre del before.
-    public String capturar(mensajero m){
+    // captura el mensajero y devuelve su posicion en el arraylist
+    public int capturar(mensajero m){
         this.setMensajero(m);
-        String t ;
-        if(before ==null){
-            t =""; 
-        }else{
-            t= this.before.getNombre_mensajero();
-        }
+        int t = intermediario.mensajeros.indexOf(m);
+        before = t;
        return t;
     }
 
@@ -122,7 +123,7 @@ public class intermediario {
      * @param mensajeros the mensajeros to set
      */
     public void setMensajeros(List<mensajero> mensajeros) {
-        this.mensajeros = mensajeros;
+        intermediario.mensajeros = mensajeros;
     }
 
     /**
@@ -142,14 +143,14 @@ public class intermediario {
     /**
 * @return the before
      */
-    public mensajero getBefore() {
+    public int getBefore() {
         return before;
     }
 
     /**
      * @param before the before to set
      */
-    public void setBefore(mensajero before) {
+    public void setBefore(int before) {
         this.before = before;
     }
 }
